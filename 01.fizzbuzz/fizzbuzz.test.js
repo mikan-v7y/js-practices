@@ -14,6 +14,6 @@ test("15の倍数のときは、数の代わりにFizzBuzzと表示", () => {
 });
 
 test("それ以外は整数で表示", () => {
-  expect(fizzbuzz(1)).toBe(1);
-  expect(fizzbuzz(2)).toBe(2);
+  expect(fizzbuzz(1)).toBe("1");
+  expect(fizzbuzz(2)).toBe("2");
 });
