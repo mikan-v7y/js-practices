@@ -10,4 +10,4 @@ function fizzbuzz(number) {
   }
 }
 
-module.exports = fizzbuzz;
+export default fizzbuzz;

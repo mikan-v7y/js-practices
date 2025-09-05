@@ -1,4 +1,4 @@
-const fizzbuzz = require("./fizzbuzz-function");
+import fizzbuzz from "./fizzbuzz-function.js";
 
 test("3の倍数のときは、数の代わりにFizzと表示", () => {
   expect(fizzbuzz(3)).toBe("Fizz");
