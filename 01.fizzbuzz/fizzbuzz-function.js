@@ -1,12 +1,12 @@
-function fizzbuzz(i) {
-  if (i % 3 === 0 && i % 5 === 0) {
+function fizzbuzz(number) {
+  if (number % 3 === 0 && number % 5 === 0) {
     return "FizzBuzz";
-  } else if (i % 3 === 0) {
+  } else if (number % 3 === 0) {
     return "Fizz";
-  } else if (i % 5 === 0) {
+  } else if (number % 5 === 0) {
     return "Buzz";
   } else {
-    return i;
+    return number;
   }
 }
 
