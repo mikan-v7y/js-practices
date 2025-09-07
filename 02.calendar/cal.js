@@ -32,7 +32,17 @@ for (let day_count = 0; day_count < firstDay.getDay(); day_count++) {
 }
 
 for (let date = 1; date <= lastDay.getDate(); date++) {
-  calendar_format += date.toString().padStart(2) + " ";
+  if (
+    date === today.getDate() &&
+    year === today.getFullYear() &&
+    month === today.getMonth() + 1
+  ) {
+    // 今日の日付の色を反転
+    calendar_format +=
+      "\x1b[30;47m" + date.toString().padStart(2) + "\x1b[0m" + " ";
+  } else {
+    calendar_format += date.toString().padStart(2) + " ";
+  }
 
   const current_day = new Date(year, month - 1, date);
   if (current_day.getDay() === 6) {
