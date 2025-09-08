@@ -11,5 +11,3 @@ for (let number = 1; number <= 20; number++) {
     console.log(number.toString());
   }
 }
-
-console.log("全ての文字が色無しで表示されます");
