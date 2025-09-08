@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-export function fizzbuzz(number) {
+export default function fizzbuzz(number) {
   if (number % 3 === 0 && number % 5 === 0) {
     return "FizzBuzz";
   } else if (number % 3 === 0) {
