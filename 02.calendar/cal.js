@@ -6,8 +6,8 @@ const options = minimist(process.argv.slice(2), {
 });
 
 const today = new Date();
-const year = options.year || today.getFullYear();
-const month = options.month || today.getMonth() + 1;
+const year = options.year ?? today.getFullYear();
+const month = options.month ?? today.getMonth() + 1;
 
 if (year < 1970 || year > 2100) {
   console.error("Year can be entered from 1970 to 2100");
