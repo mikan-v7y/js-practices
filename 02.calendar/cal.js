@@ -28,10 +28,10 @@ const padding = Math.floor((calendarWidth - yearAndMonth.length) / 2);
 console.log(" ".repeat(padding) + yearAndMonth);
 console.log("日 月 火 水 木 金 土");
 
-let calendar_format = "";
+let calendarText = "";
 
 for (let day_count = 0; day_count < firstDay.getDay(); day_count++) {
-  calendar_format += "   ";
+  calendarText += "   ";
 }
 
 for (let date = 1; date <= lastDay.getDate(); date++) {
@@ -41,16 +41,16 @@ for (let date = 1; date <= lastDay.getDate(); date++) {
     month === today.getMonth() + 1
   ) {
     // 今日の日付の色を反転
-    calendar_format +=
+    calendarText +=
       "\x1b[30;47m" + date.toString().padStart(2) + "\x1b[0m" + " ";
   } else {
-    calendar_format += date.toString().padStart(2) + " ";
+    calendarText += date.toString().padStart(2) + " ";
   }
 
   const current_day = new Date(year, month - 1, date);
   if (current_day.getDay() === 6) {
-    calendar_format += "\n";
+    calendarText += "\n";
   }
 }
 
-console.log(calendar_format);
+console.log(calendarText);
