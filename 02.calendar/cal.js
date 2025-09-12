@@ -22,7 +22,10 @@ const firstDay = new Date(year, month - 1, 1);
 const lastDay = new Date(year, month, 0); // 翌月の0日は、今月末
 
 const yearAndMonth = `${month}月 ${year}`;
-console.log(yearAndMonth.padStart(14));
+
+const calendarWidth = 20;
+const padding = Math.floor((calendarWidth - yearAndMonth.length) / 2);
+console.log(" ".repeat(padding) + yearAndMonth);
 console.log("日 月 火 水 木 金 土");
 
 let calendar_format = "";
