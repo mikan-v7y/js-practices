@@ -41,8 +41,7 @@ for (let date = 1; date <= lastDay.getDate(); date++) {
     month === today.getMonth() + 1
   ) {
     // 今日の日付の色を反転
-    calendarText +=
-      "\x1b[30;47m" + date.toString().padStart(2) + "\x1b[0m" + " ";
+    calendarText += `\x1b[30;47m${date.toString().padStart(2)}\x1b[0m `;
   } else {
     calendarText += date.toString().padStart(2) + " ";
   }
