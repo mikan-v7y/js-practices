@@ -43,7 +43,12 @@ for (let date = 1; date <= lastDay.getDate(); date++) {
     // 今日の日付の色を反転
     calendarText += `\x1b[30;47m${date.toString().padStart(2)}\x1b[0m `;
   } else {
-    calendarText += date.toString().padStart(2) + " ";
+    calendarText += date.toString().padStart(2);
+  }
+
+  // 日付が土曜日でも月末でもなければ" "を追加
+  if (new Date(year, month - 1, date).getDay() !== 6 && date !== lastDay.getDate()) {
+    calendarText += " ";
   }
 
   const current_day = new Date(year, month - 1, date);
