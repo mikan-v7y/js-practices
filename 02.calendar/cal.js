@@ -18,41 +18,50 @@ if (month < 1 || month > 12) {
   process.exit(1);
 }
 
-const firstDay = new Date(year, month - 1, 1);
-const lastDay = new Date(year, month, 0); // 翌月の0日は、今月末
-
 const yearAndMonth = `${month}月 ${year}`;
-
 const calendarWidth = 20;
 const padding = Math.floor((calendarWidth - yearAndMonth.length) / 2);
 console.log(" ".repeat(padding) + yearAndMonth);
+
 console.log("日 月 火 水 木 金 土");
+
+const firstDay = new Date(year, month - 1, 1);
+const lastDay = new Date(year, month, 0); // 翌月の0日は、今月末
 
 let calendarText = "";
 
-for (let day_count = 0; day_count < firstDay.getDay(); day_count++) {
+for (let i = 0; i < firstDay.getDay(); i++) {
   calendarText += "   ";
 }
 
-for (let date = 1; date <= lastDay.getDate(); date++) {
-  if (
-    date === today.getDate() &&
-    year === today.getFullYear() &&
-    month === today.getMonth() + 1
-  ) {
-    // 今日の日付の色を反転
-    calendarText += `\x1b[30;47m${date.toString().padStart(2)}\x1b[0m `;
+for (
+  let dateObj = firstDay;
+  dateObj <= lastDay;
+  dateObj.setDate(dateObj.getDate() + 1)
+) {
+  const currentYear = dateObj.getFullYear();
+  const currentMonth = dateObj.getMonth();
+  const currentDate = dateObj.getDate();
+  const currentDay = dateObj.getDay();
+
+  const isToday =
+    currentYear === today.getFullYear() &&
+    currentMonth === today.getMonth() &&
+    currentDate === today.getDate();
+
+  if (isToday) {
+    calendarText += `\x1b[30;47m${currentDate.toString().padStart(2)}\x1b[0m`;
   } else {
-    calendarText += date.toString().padStart(2);
+    calendarText += currentDate.toString().padStart(2);
   }
 
-  // 日付が土曜日でも月末でもなければ" "を追加
-  if (new Date(year, month - 1, date).getDay() !== 6 && date !== lastDay.getDate()) {
+  const isSaturday = currentDay === 6;
+  const isLastDate = currentDate === lastDay.getDate();
+
+  if (!isSaturday && !isLastDate) {
     calendarText += " ";
   }
-
-  const current_day = new Date(year, month - 1, date);
-  if (current_day.getDay() === 6) {
+  if (isSaturday) {
     calendarText += "\n";
   }
 }
