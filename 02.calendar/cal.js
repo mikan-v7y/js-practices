@@ -35,7 +35,7 @@ for (let i = 0; i < firstDay.getDay(); i++) {
 }
 
 for (
-  let currentDate = firstDay;
+  let currentDate = new Date(firstDay);
   currentDate <= lastDay;
   currentDate.setDate(currentDate.getDate() + 1)
 ) {
