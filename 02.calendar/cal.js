@@ -35,9 +35,9 @@ for (let i = 0; i < firstDay.getDay(); i++) {
 }
 
 for (
-  let dateObj = firstDay;
-  dateObj <= lastDay;
-  dateObj.setDate(dateObj.getDate() + 1)
+  let currentDate = firstDay;
+  currentDate <= lastDay;
+  currentDate.setDate(currentDate.getDate() + 1)
 ) {
   const currentYear = dateObj.getFullYear();
   const currentMonth = dateObj.getMonth();
