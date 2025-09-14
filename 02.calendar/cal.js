@@ -44,7 +44,10 @@ for (
     date.getMonth() === today.getMonth() &&
     date.getDate() === today.getDate()
   ) {
-    calendarText += `\x1b[30;47m${date.getDate().toString().padStart(2)}\x1b[0m`;
+    const blackTextAndWhiteBackground = "\x1b[30;47m";
+    const reset = "\x1b[0m";
+
+    calendarText += `${blackTextAndWhiteBackground}${date.getDate().toString().padStart(2)}${reset}`;
   } else {
     calendarText += date.getDate().toString().padStart(2);
   }
