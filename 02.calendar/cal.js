@@ -35,28 +35,22 @@ for (let i = 0; i < firstDay.getDay(); i++) {
 }
 
 for (
-  let currentDate = new Date(firstDay);
-  currentDate <= lastDay;
-  currentDate.setDate(currentDate.getDate() + 1)
+  let date = new Date(firstDay);
+  date <= lastDay;
+  date.setDate(date.getDate() + 1)
 ) {
-  const currentYear = dateObj.getFullYear();
-  const currentMonth = dateObj.getMonth();
-  const currentDate = dateObj.getDate();
-  const currentDay = dateObj.getDay();
-
-  const isToday =
-    currentYear === today.getFullYear() &&
-    currentMonth === today.getMonth() &&
-    currentDate === today.getDate();
-
-  if (isToday) {
-    calendarText += `\x1b[30;47m${currentDate.toString().padStart(2)}\x1b[0m`;
+  if (
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
+  ) {
+    calendarText += `\x1b[30;47m${date.getDate().toString().padStart(2)}\x1b[0m`;
   } else {
-    calendarText += currentDate.toString().padStart(2);
+    calendarText += date.getDate().toString().padStart(2);
   }
 
-  const isSaturday = currentDay === 6;
-  const isLastDate = currentDate === lastDay.getDate();
+  const isSaturday = date.getDay() === 6;
+  const isLastDate = date.getDate() === lastDay.getDate();
 
   if (!isSaturday && !isLastDate) {
     calendarText += " ";
