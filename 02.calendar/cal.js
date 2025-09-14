@@ -55,11 +55,10 @@ for (
   const isSaturday = date.getDay() === 6;
   const isLastDate = date.getDate() === lastDay.getDate();
 
-  if (!isSaturday && !isLastDate) {
-    calendarText += " ";
-  }
   if (isSaturday) {
     calendarText += "\n";
+  } else if (!isLastDate) {
+    calendarText += " ";
   }
 }
 
