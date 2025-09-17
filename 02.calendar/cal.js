@@ -25,35 +25,35 @@ console.log(" ".repeat(padding) + yearAndMonth);
 
 console.log("日 月 火 水 木 金 土");
 
-const firstDay = new Date(year, month - 1, 1);
-const lastDay = new Date(year, month, 0); // 翌月の0日は、今月末
+const firstDate = new Date(year, month - 1, 1);
+const lastDate = new Date(year, month, 0); // 翌月の0日は、今月末
 
 let calendarText = "";
 
-for (let i = 0; i < firstDay.getDay(); i++) {
+for (let i = 0; i < firstDate.getDay(); i++) {
   calendarText += "   ";
 }
 
 for (
-  let date = new Date(firstDay);
-  date <= lastDay;
-  date.setDate(date.getDate() + 1)
+  let currentDate = new Date(firstDate);
+  currentDate <= lastDate;
+  currentDate.setDate(currentDate.getDate() + 1)
 ) {
   if (
-    date.getFullYear() === today.getFullYear() &&
-    date.getMonth() === today.getMonth() &&
-    date.getDate() === today.getDate()
+    currentDate.getFullYear() === today.getFullYear() &&
+    currentDate.getMonth() === today.getMonth() &&
+    currentDate.getDate() === today.getDate()
   ) {
     const blackTextAndWhiteBackground = "\x1b[30;47m";
     const reset = "\x1b[0m";
 
-    calendarText += `${blackTextAndWhiteBackground}${date.getDate().toString().padStart(2)}${reset}`;
+    calendarText += `${blackTextAndWhiteBackground}${currentDate.getDate().toString().padStart(2)}${reset}`;
   } else {
-    calendarText += date.getDate().toString().padStart(2);
+    calendarText += currentDate.getDate().toString().padStart(2);
   }
 
-  const isSaturday = date.getDay() === 6;
-  const isLastDate = date.getDate() === lastDay.getDate();
+  const isSaturday = currentDate.getDay() === 6;
+  const isLastDate = currentDate.getDate() === lastDate.getDate();
 
   if (isSaturday) {
     calendarText += "\n";
