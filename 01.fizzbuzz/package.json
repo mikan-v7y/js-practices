@@ -1,4 +1,5 @@
 {
+  "name": "01.fizzbuzz",
   "scripts": {
     "fix": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint .",
