@@ -12,6 +12,7 @@
   },
   "type": "module",
   "dependencies": {
+    "colorette": "^2.0.20",
     "minimist": "^1.2.8"
   }
 }

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import minimist from "minimist";
+import { black, bgWhite } from "colorette";
 
 const options = minimist(process.argv.slice(2), {
   alias: { y: "year", m: "month" },
@@ -45,10 +46,9 @@ for (
     currentDate.getDate() === today.getDate();
 
   if (isToday) {
-    const blackTextAndWhiteBackground = "\x1b[30;47m";
-    const reset = "\x1b[0m";
-
-    calendarText += `${blackTextAndWhiteBackground}${currentDate.getDate().toString().padStart(2)}${reset}`;
+    calendarText += bgWhite(
+      black(currentDate.getDate().toString().padStart(2)),
+    );
   } else {
     calendarText += currentDate.getDate().toString().padStart(2);
   }
