@@ -56,9 +56,9 @@ for (
   const isSaturday = currentDate.getDay() === 6;
   const isLastDate = currentDate.getDate() === lastDate.getDate();
 
-  if (isSaturday) {
+  if (isSaturday || isLastDate) {
     calendarText += "\n";
-  } else if (!isLastDate) {
+  } else {
     calendarText += " ";
   }
 }
