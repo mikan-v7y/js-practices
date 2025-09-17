@@ -39,11 +39,12 @@ for (
   currentDate <= lastDate;
   currentDate.setDate(currentDate.getDate() + 1)
 ) {
-  if (
+  const isToday =
     currentDate.getFullYear() === today.getFullYear() &&
     currentDate.getMonth() === today.getMonth() &&
-    currentDate.getDate() === today.getDate()
-  ) {
+    currentDate.getDate() === today.getDate();
+
+  if (isToday) {
     const blackTextAndWhiteBackground = "\x1b[30;47m";
     const reset = "\x1b[0m";
 
