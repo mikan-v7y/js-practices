@@ -45,12 +45,12 @@ for (
     currentDate.getMonth() === today.getMonth() &&
     currentDate.getDate() === today.getDate();
 
+  const currentDateText = currentDate.getDate().toString().padStart(2);
+
   if (isToday) {
-    calendarText += bgWhite(
-      black(currentDate.getDate().toString().padStart(2)),
-    );
+    calendarText += bgWhite(black(currentDateText));
   } else {
-    calendarText += currentDate.getDate().toString().padStart(2);
+    calendarText += currentDateText;
   }
 
   const isSaturday = currentDate.getDay() === 6;
