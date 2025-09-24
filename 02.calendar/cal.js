@@ -54,7 +54,10 @@ for (
   }
 
   const isSaturday = currentDate.getDay() === 6;
-  const isLastDate = currentDate.getDate() === lastDate.getDate();
+  const isLastDate =
+    currentDate.getFullYear() === lastDate.getFullYear() &&
+    currentDate.getMonth() === lastDate.getMonth() &&
+    currentDate.getDate() === lastDate.getDate();
 
   if (isSaturday || isLastDate) {
     calendarText += "\n";
