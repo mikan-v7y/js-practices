@@ -9,7 +9,13 @@ db.run(
 
     insertBookStmt.run(null, function (err) {
       if (err) {
-        console.error(`標準エラー: ${err.message}`);
+        console.error(`エラーを伴うレコードの追加: ${err.message}`);
+      }
+    });
+
+    db.each("SELECT id, hogehoge FROM books", function (err) {
+      if (err) {
+        console.error(`エラーを伴うレコードの取得: ${err.message}`);
       }
     });
 
