@@ -19,6 +19,10 @@ db.run(
       }
     });
 
+    db.run("DROP TABLE books", () => {
+      db.close();
+    });
+
     insertBookStmt.finalize();
   },
 );
