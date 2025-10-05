@@ -13,9 +13,18 @@ db.run(
       insertBookStmt.run("ゼロからわかるRuby超入門", function () {
         console.log(`ID${this.lastID}が自動採番されました。`);
 
-        db.each("SELECT id, title FROM books", (_, row) => {
-          console.log(`{ID:${row.id}, タイトル:${row.title}}`);
-        });
+        db.each(
+          "SELECT id, title FROM books",
+          (_, row) => {
+            console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+          },
+
+          () => {
+            db.run("DROP TABLE books", () => {
+              db.close();
+            });
+          },
+        );
 
         insertBookStmt.finalize();
       });
