@@ -9,12 +9,16 @@ db.run(
 
     insertBookStmt.run("チェリー本", function () {
       console.log(`ID${this.lastID}が自動採番されました。`);
-    });
 
-    insertBookStmt.run("ゼロからわかるRuby超入門", function () {
-      console.log(`ID${this.lastID}が自動採番されました。`);
-    });
+      insertBookStmt.run("ゼロからわかるRuby超入門", function () {
+        console.log(`ID${this.lastID}が自動採番されました。`);
 
-    insertBookStmt.finalize();
+        db.each("SELECT id, title FROM books", (_, row) => {
+          console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+        });
+
+        insertBookStmt.finalize();
+      });
+    });
   },
 );
