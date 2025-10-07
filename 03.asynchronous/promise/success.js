@@ -42,4 +42,7 @@ runSqlAsync(
   })
   .then(() => {
     return runSqlAsync("DROP TABLE books");
+  })
+  .then(() => {
+    db.close();
   });
