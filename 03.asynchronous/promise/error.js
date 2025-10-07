@@ -11,6 +11,14 @@ function runSqlAsync(sql, params) {
   });
 }
 
+function eachSqlAsync(sql, params) {
+  return new Promise((resolve, reject) => {
+    db.each(sql, params, (err) => {
+      if (err) reject(err);
+    });
+  });
+}
+
 runSqlAsync(
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
 )
@@ -19,4 +27,10 @@ runSqlAsync(
   })
   .catch((err) => {
     console.error(`エラーを伴うレコードの追加: ${err.message}`);
+  })
+  .then(() => {
+    return eachSqlAsync("SELECT id, hogehoge FROM books");
+  })
+  .catch((err) => {
+    console.error(`エラーを伴うレコードの取得: ${err.message}`);
   });
