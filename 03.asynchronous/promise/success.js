@@ -39,4 +39,7 @@ runSqlAsync(
   .then((result) => {
     console.log(`ID${result.lastID}が自動採番されました。`);
     return eachSqlAsync("SELECT id, title FROM books");
+  })
+  .then(() => {
+    return runSqlAsync("DROP TABLE books");
   });
