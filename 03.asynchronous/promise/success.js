@@ -11,8 +11,16 @@ function runSqlAsync(sql, params) {
 }
 
 function eachSqlAsync(sql) {
-  db.each(sql, (_, row) => {
-    console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+  return new Promise((resolve) => {
+    db.each(
+      sql,
+      (_, row) => {
+        console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+      },
+      () => {
+        resolve();
+      },
+    );
   });
 }
 
@@ -30,5 +38,5 @@ runSqlAsync(
   })
   .then((result) => {
     console.log(`ID${result.lastID}が自動採番されました。`);
-    eachSqlAsync("SELECT id, title FROM books");
+    return eachSqlAsync("SELECT id, title FROM books");
   });
