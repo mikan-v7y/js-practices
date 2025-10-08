@@ -10,6 +10,12 @@ async function f() {
   } catch (err) {
     console.error(`エラーを伴うレコードの追加: ${err.message}`);
   }
+
+  try {
+    await eachSqlAsync("SELECT id, hogehoge FROM books");
+  } catch (err) {
+    console.error(`エラーを伴うレコードの取得: ${err.message}`);
+  }
 }
 
 f();
