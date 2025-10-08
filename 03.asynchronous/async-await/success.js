@@ -19,6 +19,8 @@ async function f() {
   await eachSqlAsync("SELECT id, title FROM books");
 
   await runSqlAsync("DROP TABLE books");
+
+  closeDb;
 }
 
 f();
