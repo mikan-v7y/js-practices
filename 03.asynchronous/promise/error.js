@@ -45,4 +45,10 @@ runSqlAsync(
   })
   .catch((err) => {
     console.error(`エラーを伴うレコードの取得: ${err.message}`);
+  })
+  .then(() => {
+    return runSqlAsync("DROP TABLE books");
+  })
+  .then(() => {
+    db.close();
   });
