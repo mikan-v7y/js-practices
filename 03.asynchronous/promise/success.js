@@ -10,6 +10,12 @@ function runSqlAsync(sql, params) {
   });
 }
 
+function eachSqlAsync(sql) {
+  db.each(sql, (_, row) => {
+    console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+  });
+}
+
 runSqlAsync(
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
 )
@@ -25,4 +31,5 @@ runSqlAsync(
   })
   .then((result) => {
     console.log(`ID${result.lastID}が自動採番されました。`);
+    eachSqlAsync("SELECT id, title FROM books");
   });
