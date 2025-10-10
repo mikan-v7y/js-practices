@@ -1,4 +1,4 @@
-import { runSqlAsync } from "../db.js";
+import { runSqlAsync, eachSqlAsync } from "../db.js";
 
 async function f() {
   await runSqlAsync(
@@ -14,6 +14,8 @@ async function f() {
     "ゼロからわかるRuby超入門",
   ]);
   console.log(`ID${result2.lastID}が自動採番されました。`);
+
+  await eachSqlAsync("SELECT id, title FROM books");
 }
 
 f();
