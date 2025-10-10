@@ -1,4 +1,4 @@
-import { runSqlAsync } from "../db.js";
+import { runSqlAsync, eachSqlAsync } from "../db.js";
 
 async function f() {
   await runSqlAsync(
@@ -9,6 +9,12 @@ async function f() {
     await runSqlAsync("INSERT INTO books (title) VALUES (?)", [null]);
   } catch (err) {
     console.error(`エラーを伴うレコードの追加: ${err.message}`);
+  }
+
+  try {
+    await eachSqlAsync("SELECT id, hogehoge FROM books");
+  } catch (err) {
+    console.error(`エラーを伴うレコードの取得: ${err.message}`);
   }
 }
 
