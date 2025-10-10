@@ -1,35 +1,4 @@
-import sqlite3 from "sqlite3";
-
-const db = new sqlite3.Database(":memory:");
-
-function runSqlAsync(sql, params) {
-  return new Promise((resolve, reject) => {
-    db.run(sql, params, function (err) {
-      if (err) reject(err);
-      else resolve(this);
-    });
-  });
-}
-
-function eachSqlAsync(sql, params) {
-  return new Promise((resolve, reject) => {
-    db.each(
-      sql,
-      params,
-      (err, row) => {
-        if (err) {
-          reject(err);
-        } else {
-          console.log(row);
-        }
-      },
-      (err, count) => {
-        if (err) reject(err);
-        else resolve(count);
-      },
-    );
-  });
-}
+import { runSqlAsync, eachSqlAsync, closeDb } from "../db.js";
 
 runSqlAsync(
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
@@ -50,5 +19,5 @@ runSqlAsync(
     return runSqlAsync("DROP TABLE books");
   })
   .then(() => {
-    db.close();
+    closeDb();
   });

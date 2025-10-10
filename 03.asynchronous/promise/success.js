@@ -1,28 +1,4 @@
-import sqlite3 from "sqlite3";
-
-const db = new sqlite3.Database(":memory:");
-
-function runSqlAsync(sql, params) {
-  return new Promise((resolve) => {
-    db.run(sql, params, function () {
-      resolve(this);
-    });
-  });
-}
-
-function eachSqlAsync(sql) {
-  return new Promise((resolve) => {
-    db.each(
-      sql,
-      (_, row) => {
-        console.log(`{ID:${row.id}, タイトル:${row.title}}`);
-      },
-      () => {
-        resolve();
-      },
-    );
-  });
-}
+import { runSqlAsync, eachSqlAsync, closeDb } from "../db.js";
 
 runSqlAsync(
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
@@ -45,5 +21,5 @@ runSqlAsync(
     return runSqlAsync("DROP TABLE books");
   })
   .then(() => {
-    db.close();
+    closeDb();
   });
