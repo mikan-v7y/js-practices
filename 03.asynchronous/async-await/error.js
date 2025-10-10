@@ -1,4 +1,4 @@
-import { runSqlAsync, eachSqlAsync } from "../db.js";
+import { runSqlAsync, eachSqlAsync, closeDb } from "../db.js";
 
 async function f() {
   await runSqlAsync(
@@ -16,6 +16,10 @@ async function f() {
   } catch (err) {
     console.error(`エラーを伴うレコードの取得: ${err.message}`);
   }
+
+  await runSqlAsync("DROP TABLE books");
+
+  closeDb();
 }
 
 f();
