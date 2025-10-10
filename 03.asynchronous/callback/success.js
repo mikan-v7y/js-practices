@@ -20,6 +20,7 @@ db.run(
           },
 
           () => {
+            insertBookStmt.finalize();
             db.run("DROP TABLE books", () => {
               db.close();
             });

@@ -11,12 +11,16 @@ db.run(
       if (err) {
         console.error(`エラーを伴うレコードの追加: ${err.message}`);
       }
-    });
 
-    db.each("SELECT id, hogehoge FROM books", function (err) {
-      if (err) {
-        console.error(`エラーを伴うレコードの取得: ${err.message}`);
-      }
+      db.each("SELECT id, hogehoge FROM books", function (err) {
+        if (err) {
+          console.error(`エラーを伴うレコードの取得: ${err.message}`);
+        }
+      });
+      insertBookStmt.finalize();
+      db.run("DROP TABLE books", () => {
+        db.close();
+      });
     });
   },
 );
