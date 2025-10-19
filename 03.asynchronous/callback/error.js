@@ -5,9 +5,11 @@ const db = new sqlite3.Database(":memory:");
 db.run(
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
   () => {
-    const insertBookStmt = db.prepare("INSERT INTO books (title) VALUES (?)");
+    const insertBookStatement = db.prepare(
+      "INSERT INTO books (title) VALUES (?)",
+    );
 
-    insertBookStmt.run(null, function (err) {
+    insertBookStatement.run(null, function (err) {
       if (err) {
         console.error(`エラーを伴うレコードの追加: ${err.message}`);
       }
@@ -22,7 +24,7 @@ db.run(
         });
       });
 
-      insertBookStmt.finalize();
+      insertBookStatement.finalize();
     });
   },
 );
