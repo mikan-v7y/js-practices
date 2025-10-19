@@ -20,7 +20,6 @@ db.run(
           (_, row) => {
             console.log(`{ID:${row.id}, タイトル:${row.title}}`);
           },
-
           () => {
             db.run("DROP TABLE books", () => {
               db.close();
