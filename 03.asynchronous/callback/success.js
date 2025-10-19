@@ -21,13 +21,12 @@ db.run(
             console.log(`{ID:${row.id}, タイトル:${row.title}}`);
           },
           () => {
+            insertBookStatement.finalize();
             db.run("DROP TABLE books", () => {
               db.close();
             });
           },
         );
-
-        insertBookStatement.finalize();
       });
     });
   },

@@ -18,12 +18,11 @@ db.run(
         if (err) {
           console.error(`エラーを伴うレコードの取得: ${err.message}`);
         }
+        insertBookStatement.finalize();
         db.run("DROP TABLE books", () => {
           db.close();
         });
       });
-
-      insertBookStatement.finalize();
     });
   },
 );
