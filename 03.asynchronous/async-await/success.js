@@ -20,7 +20,9 @@ async function f() {
   );
   console.log(`ID${result2.lastID}が自動採番されました。`);
 
-  await eachSqlAsync(db, "SELECT id, title FROM books");
+  await eachSqlAsync(db, "SELECT id, title FROM books", [], (row) => {
+    console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+  });
 
   await runSqlAsync(db, "DROP TABLE books");
 

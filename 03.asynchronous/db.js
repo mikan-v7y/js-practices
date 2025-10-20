@@ -14,7 +14,7 @@ export function runSqlAsync(db, sql, params) {
   });
 }
 
-export function eachSqlAsync(db, sql, params) {
+export function eachSqlAsync(db, sql, params, rowCallBack) {
   return new Promise((resolve, reject) => {
     db.each(
       sql,
@@ -23,7 +23,7 @@ export function eachSqlAsync(db, sql, params) {
         if (err) {
           reject(err);
         } else {
-          console.log(`{ID:${row.id}, タイトル:${row.title}}`);
+          rowCallBack(row);
         }
       },
       (err) => {
