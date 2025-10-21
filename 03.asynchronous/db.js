@@ -14,6 +14,18 @@ export function runSqlAsync(db, sql, params) {
   });
 }
 
+export function runStatementAsync(insertBookStatement, params) {
+  return new Promise((resolve, reject) => {
+    insertBookStatement.run(params, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(this);
+      }
+    });
+  });
+}
+
 export function eachSqlAsync(db, sql, params, rowCallBack) {
   return new Promise((resolve, reject) => {
     db.each(

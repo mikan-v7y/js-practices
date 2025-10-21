@@ -1,4 +1,10 @@
-import { db, runSqlAsync, eachSqlAsync, closeDb } from "../db.js";
+import {
+  db,
+  runSqlAsync,
+  runStatementAsync,
+  eachSqlAsync,
+  closeDb,
+} from "../db.js";
 
 async function f() {
   await runSqlAsync(
@@ -6,8 +12,12 @@ async function f() {
     "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
   );
 
+  const insertBookStatement = db.prepare(
+    "INSERT INTO books (title) VALUES (?)",
+  );
+
   try {
-    await runSqlAsync(db, "INSERT INTO books (title) VALUES (?)", [null]);
+    await runStatementAsync(insertBookStatement, [null]);
   } catch (err) {
     console.error(`エラーを伴うレコードの追加: ${err.message}`);
   }
@@ -17,6 +27,8 @@ async function f() {
   } catch (err) {
     console.error(`エラーを伴うレコードの取得: ${err.message}`);
   }
+
+  insertBookStatement.finalize();
 
   await runSqlAsync(db, "DROP TABLE books");
 
