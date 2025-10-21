@@ -20,5 +20,5 @@ runSqlAsync(
     return runSqlAsync(db, "DROP TABLE books");
   })
   .then(() => {
-    closeDb();
+    closeDb(db);
   });

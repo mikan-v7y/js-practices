@@ -26,7 +26,7 @@ async function f() {
 
   await runSqlAsync(db, "DROP TABLE books");
 
-  closeDb;
+  await closeDb(db);
 }
 
 f();

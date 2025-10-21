@@ -37,6 +37,14 @@ export function eachSqlAsync(db, sql, params, rowCallBack) {
   });
 }
 
-export function closeDb() {
-  db.close();
+export function closeDb(db) {
+  return new Promise((resolve, reject) => {
+    db.close((err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
 }
