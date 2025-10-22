@@ -22,10 +22,8 @@ runSqlAsync(
     })
     .catch((err) => {
       console.error(`エラーを伴うレコードの取得: ${err.message}`);
-    })
-    .then(() => {
-      insertBookStatement.finalize();
 
+      insertBookStatement.finalize();
       return runSqlAsync(db, "DROP TABLE books");
     })
     .then(() => {
