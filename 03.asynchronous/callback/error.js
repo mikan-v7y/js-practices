@@ -9,12 +9,12 @@ db.run(
       "INSERT INTO books (title) VALUES (?)",
     );
 
-    insertBookStatement.run(null, function (err) {
+    insertBookStatement.run(null, (err) => {
       if (err) {
         console.error(`エラーを伴うレコードの追加: ${err.message}`);
       }
 
-      db.each("SELECT id, hogehoge FROM books", function (err) {
+      db.each("SELECT id, hogehoge FROM books", (err) => {
         if (err) {
           console.error(`エラーを伴うレコードの取得: ${err.message}`);
         }
