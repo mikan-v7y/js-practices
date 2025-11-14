@@ -1,7 +1,3 @@
-import sqlite3 from "sqlite3";
-
-export const db = new sqlite3.Database(":memory:");
-
 export function runSqlAsync(db, sql, params) {
   return new Promise((resolve, reject) => {
     db.run(sql, params, function (err) {
