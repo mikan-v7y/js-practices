@@ -10,9 +10,9 @@ export function runSqlAsync(db, sql, params) {
   });
 }
 
-export function runStatementAsync(insertBookStatement, params) {
+export function runStatementAsync(statement, params) {
   return new Promise((resolve, reject) => {
-    insertBookStatement.run(params, function (err) {
+    statement.run(params, function (err) {
       if (err) {
         reject(err);
       } else {
