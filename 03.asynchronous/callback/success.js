@@ -9,10 +9,10 @@ db.run(
       "INSERT INTO books (title) VALUES (?)",
     );
 
-    insertBookStatement.run("チェリー本", function () {
+    insertBookStatement.run(["チェリー本"], function () {
       console.log(`ID${this.lastID}が自動採番されました。`);
 
-      insertBookStatement.run("ゼロからわかるRuby超入門", function () {
+      insertBookStatement.run(["ゼロからわかるRuby超入門"], function () {
         console.log(`ID${this.lastID}が自動採番されました。`);
 
         db.each(

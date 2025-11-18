@@ -9,7 +9,7 @@ db.run(
       "INSERT INTO books (title) VALUES (?)",
     );
 
-    insertBookStatement.run(null, (err) => {
+    insertBookStatement.run([null], (err) => {
       if (err) {
         console.error(`エラーを伴うレコードの追加: ${err.message}`);
       }
