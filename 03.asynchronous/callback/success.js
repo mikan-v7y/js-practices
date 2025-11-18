@@ -22,6 +22,7 @@ db.run(
           },
           () => {
             insertBookStatement.finalize();
+
             db.run("DROP TABLE books", () => {
               db.close();
             });
