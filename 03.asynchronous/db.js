@@ -22,7 +22,7 @@ export function runStatementAsync(statement, params) {
   });
 }
 
-export function eachSqlAsync(db, sql, params, rowCallBack) {
+export function eachSqlAsync(db, sql, params, rowCallback) {
   return new Promise((resolve, reject) => {
     db.each(
       sql,
@@ -31,7 +31,7 @@ export function eachSqlAsync(db, sql, params, rowCallBack) {
         if (err) {
           reject(err);
         } else {
-          rowCallBack(row);
+          rowCallback(row);
         }
       },
       (err) => {
