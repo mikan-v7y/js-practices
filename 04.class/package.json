@@ -10,5 +10,11 @@
     "globals": "^15.13.0",
     "prettier": "^3.4.2"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "inquirer": "^13.0.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "yargs": "^18.0.0"
+  }
 }
