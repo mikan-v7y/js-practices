@@ -44,4 +44,5 @@ try {
   await closeDb(db);
 } catch (err) {
   console.error(`想定外のエラー: ${err.message}`);
+  throw err;
 }
