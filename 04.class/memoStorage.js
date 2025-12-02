@@ -10,16 +10,18 @@ export default class MemoStorage {
         filename: "./memos.db",
         driver: sqlite3.Database,
       });
-      await this.#db.exec(`
+
+      await this.#db.exec(
+        `
         CREATE TABLE IF NOT EXISTS memos (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           content TEXT NOT NULL
-        )
-      `);
+      )`.trim(),
+      );
     }
   }
 
-  async insert(content) {
+  async save(content) {
     await this.#db.run("INSERT INTO memos (content) VALUES (?)", content);
   }
 

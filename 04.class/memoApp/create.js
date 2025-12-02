@@ -18,7 +18,7 @@ export default class Create {
     }
 
     if (content.trim()) {
-      await this.storage.insert(content.trim());
+      await this.storage.save(content.trim());
       console.log("メモを保存しました。");
     } else {
       console.log("空のメモは保存できません。");
