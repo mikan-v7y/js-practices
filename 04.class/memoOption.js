@@ -10,10 +10,15 @@ export default class MemoOption {
       .option("r", { type: "boolean" })
       .option("d", { type: "boolean" }).argv;
 
-    if (parsed.l) this.#action = "list";
-    else if (parsed.r) this.#action = "read";
-    else if (parsed.d) this.#action = "delete";
-    else this.#action = "create";
+    if (parsed.l) {
+      this.#action = "list";
+    } else if (parsed.r) {
+      this.#action = "read";
+    } else if (parsed.d) {
+      this.#action = "delete";
+    } else {
+      this.#action = "create";
+    }
   }
 
   get action() {
