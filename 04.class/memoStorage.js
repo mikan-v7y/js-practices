@@ -26,7 +26,7 @@ export default class MemoStorage {
   }
 
   async getAll() {
-    return await this.#db.all("SELECT * FROM memos");
+    return await this.#db.all("SELECT * FROM memos ORDER BY id");
   }
 
   async getById(id) {
