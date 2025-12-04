@@ -1,6 +1,6 @@
 import readline from "readline";
 
-export default class Create {
+export default class MemoCreation {
   constructor(storage) {
     this.storage = storage;
   }

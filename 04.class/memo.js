@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import Create from "./memoApp/create.js";
+import MemoCreation from "./memoApp/create.js";
 import Delete from "./memoApp/delete.js";
 import List from "./memoApp/list.js";
 import Read from "./memoApp/read.js";
@@ -13,7 +13,7 @@ async function main() {
 
   switch (option.action) {
     case "create":
-      await new Create(storage).run();
+      await new MemoCreation(storage).run();
       break;
     case "list":
       await new List(storage).run();
