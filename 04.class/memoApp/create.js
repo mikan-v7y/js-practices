@@ -12,7 +12,7 @@ export default class MemoCreation {
 
     const rl = readline.createInterface({
       input: process.stdin,
-      output: process.stdout,
+      output: process.stdin.isTTY ? process.stdout : undefined,
     });
 
     let content = "";
