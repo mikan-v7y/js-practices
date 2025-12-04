@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import MemoCreation from "./memoApp/create.js";
-import Delete from "./memoApp/delete.js";
+import MemoDeletion from "./memoApp/delete.js";
 import List from "./memoApp/list.js";
 import Read from "./memoApp/read.js";
 import MemoOption from "./memoOption.js";
@@ -22,7 +22,7 @@ async function main() {
       await new Read(storage).run();
       break;
     case "delete":
-      await new Delete(storage).run();
+      await new MemoDeletion(storage).run();
       break;
   }
 }

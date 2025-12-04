@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 
-export default class Delete {
+export default class MemoDeletion {
   constructor(storage) {
     this.storage = storage;
   }
