@@ -2,7 +2,7 @@
 import MemoCreation from "./memoApp/create.js";
 import MemoDeletion from "./memoApp/delete.js";
 import MemoList from "./memoApp/list.js";
-import Read from "./memoApp/read.js";
+import MemoDisplay from "./memoApp/read.js";
 import MemoOption from "./memoOption.js";
 import MemoStorage from "./memoStorage.js";
 
@@ -19,7 +19,7 @@ async function main() {
       await new MemoList(storage).run();
       break;
     case "read":
-      await new Read(storage).run();
+      await new MemoDisplay(storage).run();
       break;
     case "delete":
       await new MemoDeletion(storage).run();

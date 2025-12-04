@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 
-export default class Read {
+export default class MemoList {
   constructor(storage) {
     this.storage = storage;
   }
