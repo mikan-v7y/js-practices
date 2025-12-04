@@ -17,7 +17,7 @@ export default class MemoCreation {
 
     let content = "";
     for await (const line of rl) {
-      content += line + "\n";
+      content += `${line}\n`;
     }
 
     if (content.trim()) {
