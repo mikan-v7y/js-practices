@@ -6,7 +6,10 @@ export default class MemoCreation {
   }
 
   async run() {
-    console.log("メモを入力してください（Ctrl+Dで終了）。");
+    if (process.stdin.isTTY) {
+      console.log("メモを入力してください（Ctrl+Dで終了）。");
+    }
+
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
