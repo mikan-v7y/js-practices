@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import MemoCreation from "./memoApp/create.js";
 import MemoDeletion from "./memoApp/delete.js";
-import List from "./memoApp/list.js";
+import MemoList from "./memoApp/list.js";
 import Read from "./memoApp/read.js";
 import MemoOption from "./memoOption.js";
 import MemoStorage from "./memoStorage.js";
@@ -16,7 +16,7 @@ async function main() {
       await new MemoCreation(storage).run();
       break;
     case "list":
-      await new List(storage).run();
+      await new MemoList(storage).run();
       break;
     case "read":
       await new Read(storage).run();

@@ -1,4 +1,4 @@
-export default class List {
+export default class MemoList {
   constructor(storage) {
     this.storage = storage;
   }
