@@ -21,7 +21,7 @@ export default class MemoList {
       {
         type: "list",
         name: "id",
-        message: "Choose a note you want to see:",
+        message: "Choose a memo you want to see:",
         choices,
       },
     ]);
