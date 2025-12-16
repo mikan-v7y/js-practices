@@ -16,8 +16,20 @@ export default class MemoCreation {
     });
 
     let content = "";
+    let interrupted = false;
+
+    rl.on("SIGINT", () => {
+      interrupted = true;
+      rl.close();
+    });
+
     for await (const line of rl) {
       content += `${line}\n`;
+    }
+
+    if (interrupted) {
+      console.log("入力が中断されたため、保存されませんでした。");
+      return;
     }
 
     const trimmedContent = content.trim();
