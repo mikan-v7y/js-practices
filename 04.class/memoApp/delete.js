@@ -21,7 +21,7 @@ export default class MemoDeletion {
       {
         type: "list",
         name: "id",
-        message: "Choose a memo you want to edit:",
+        message: "Choose a memo you want to delete:",
         choices,
       },
     ]);
