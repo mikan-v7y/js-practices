@@ -21,7 +21,7 @@ export default class MemoList {
     try {
       answer = await inquirer.prompt([
         {
-          type: "list",
+          type: "rawlist",
           name: "id",
           message: "Choose a memo you want to see:",
           choices,

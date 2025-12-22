@@ -19,7 +19,7 @@ export default class MemoDeletion {
 
     const answer = await inquirer.prompt([
       {
-        type: "list",
+        type: "rawlist",
         name: "id",
         message: "Choose a memo you want to delete:",
         choices,
