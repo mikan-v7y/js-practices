@@ -17,14 +17,24 @@ export default class MemoList {
       value: memo.id,
     }));
 
-    const answer = await inquirer.prompt([
-      {
-        type: "list",
-        name: "id",
-        message: "Choose a memo you want to see:",
-        choices,
-      },
-    ]);
+    let answer;
+    try {
+      answer = await inquirer.prompt([
+        {
+          type: "list",
+          name: "id",
+          message: "Choose a memo you want to see:",
+          choices,
+        },
+      ]);
+    } catch (err) {
+      if (err?.name === "ExitPromptError") {
+        console.log("\n正常にキャンセルしました");
+        process.exit(0);
+      }
+      console.error(err);
+      process.exit(1);
+    }
 
     const memo = await this.storage.getById(answer.id);
     console.log("\n" + memo.content);
