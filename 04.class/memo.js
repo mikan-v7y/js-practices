@@ -2,7 +2,7 @@
 import MemoCreation from "./memoApp/create.js";
 import MemoDeletion from "./memoApp/delete.js";
 import MemoList from "./memoApp/list.js";
-import MemoDisplay from "./memoApp/read.js";
+import MemoDisplay from "./memoApp/display.js";
 import MemoOption from "./memoOption.js";
 import MemoStorage from "./memoStorage.js";
 
