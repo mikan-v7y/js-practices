@@ -1,11 +1,11 @@
+import sqlite3 from "sqlite3";
+
 import {
+  closeDb,
+  eachSqlAsync,
   runSqlAsync,
   runStatementAsync,
-  eachSqlAsync,
-  closeDb,
 } from "../db.js";
-
-import sqlite3 from "sqlite3";
 
 const db = new sqlite3.Database(":memory:");
 
