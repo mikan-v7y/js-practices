@@ -33,6 +33,4 @@ runSqlAsync(
     insertBookStatement.finalize();
     return runSqlAsync(db, "DROP TABLE books");
   })
-  .then(() => {
-    return closeDb(db);
-  });
+  .then(() => closeDb(db));
