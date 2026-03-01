@@ -22,7 +22,7 @@ try {
   try {
     await runStatementAsync(insertBookStatement, [null]);
   } catch (err) {
-    if (err?.code === "SQLITE_CONSTRAINT") {
+    if (err instanceof Error && err.code === "SQLITE_CONSTRAINT") {
       console.error(`エラーを伴うレコードの追加: ${err?.message ?? err}`);
     } else {
       throw err;
@@ -32,7 +32,7 @@ try {
   try {
     await eachSqlAsync(db, "SELECT id, hogehoge FROM books");
   } catch (err) {
-    if (err.code === "SQLITE_ERROR") {
+    if (err instanceof Error && err.code === "SQLITE_ERROR") {
       console.error(`エラーを伴うレコードの取得: ${err.message}`);
     } else {
       throw err;
