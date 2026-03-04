@@ -23,7 +23,7 @@ try {
     await runStatementAsync(insertBookStatement, [null]);
   } catch (err) {
     if (err instanceof Error && err.code === "SQLITE_CONSTRAINT") {
-      console.error(`エラーを伴うレコードの追加: ${err?.message ?? err}`);
+      console.error(`エラーを伴うレコードの追加: ${err.message}`);
     } else {
       throw err;
     }
