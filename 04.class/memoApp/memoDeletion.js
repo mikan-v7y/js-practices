@@ -17,14 +17,24 @@ export default class MemoDeletion {
       value: memo.id,
     }));
 
-    const answer = await inquirer.prompt([
-      {
-        type: "rawlist",
-        name: "id",
-        message: "Choose a memo you want to delete:",
-        choices,
-      },
-    ]);
+    let answer;
+    try {
+      answer = await inquirer.prompt([
+        {
+          type: "rawlist",
+          name: "id",
+          message: "Choose a memo you want to delete:",
+          choices,
+        },
+      ]);
+    } catch (err) {
+      if (err?.name === "ExitPromptError") {
+        console.log("\n正常にキャンセルしました");
+        process.exit(0);
+      }
+      console.error(err);
+      process.exit(1);
+    }
 
     await this.storage.deleteById(answer.id);
     console.log("メモを削除しました。");
