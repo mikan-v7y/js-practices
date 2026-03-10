@@ -32,10 +32,8 @@ export default class MemoCreation {
       return;
     }
 
-    const trimmedContent = content.trim();
-    const hasContent = trimmedContent.length > 0;
-    if (hasContent) {
-      await this.storage.save(trimmedContent);
+    if (content.trim().length > 0) {
+      await this.storage.save(content.trim());
       console.log("メモを保存しました。");
     } else {
       console.log("空のメモは保存できません。");
