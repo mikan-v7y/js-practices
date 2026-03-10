@@ -16,7 +16,7 @@ export default class MemoStorage {
         CREATE TABLE IF NOT EXISTS memos (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           content TEXT NOT NULL
-      )`.trim(),
+      )`,
       );
     }
   }
