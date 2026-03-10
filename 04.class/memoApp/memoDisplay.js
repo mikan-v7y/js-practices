@@ -37,6 +37,7 @@ export default class MemoDisplay {
     }
 
     const memo = await this.storage.getById(answer.id);
-    console.log("\n" + memo.content);
+    console.log();
+    console.log(memo.content);
   }
 }
