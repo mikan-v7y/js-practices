@@ -2,10 +2,10 @@ import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
 export default class MemoStorage {
-  #db = null;
+  #db;
 
   async connect() {
-    if (this.#db === null) {
+    if (this.#db === undefined) {
       this.#db = await open({
         filename: "./memos.db",
         driver: sqlite3.Database,
