@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import MemoCreation from "./memoApp/create.js";
-import MemoDeletion from "./memoApp/delete.js";
-import MemoList from "./memoApp/list.js";
-import MemoDisplay from "./memoApp/display.js";
+import MemoCreation from "./memoApp/memoCreation.js";
+import MemoDeletion from "./memoApp/memoDeletion.js";
+import MemoList from "./memoApp/memoList.js";
+import MemoDisplay from "./memoApp/memoDisplay.js";
 import MemoOption from "./memoOption.js";
 import MemoStorage from "./memoStorage.js";
 
