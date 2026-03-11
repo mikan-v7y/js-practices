@@ -1,5 +1,6 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import { stripIndent } from "common-tags";
 
 export default class MemoStorage {
   #db;
@@ -11,13 +12,12 @@ export default class MemoStorage {
         driver: sqlite3.Database,
       });
 
-      await this.#db.exec(
-        `
+      await this.#db.exec(stripIndent`
         CREATE TABLE IF NOT EXISTS memos (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           content TEXT NOT NULL
-      )`,
-      );
+        )
+      `);
     }
   }
 
